@@ -1,23 +1,10 @@
-# Project Groat
-
-## For develompent
-
-* Clone the repo
-* Get the [Heroku Toolbelt](https://toolbelt.heroku.com/)
-* push to your heroku account. [Calvin](https://github.com/calvingiles) is keeper of the keys for this one for now.
-
-## API
-
-Not defined yet. It should be RESTful and json.
-
-
-## Heroku getting started README --- python-getting-started
+# python-getting-started
 
 A barebones Python app, which can easily be deployed to Heroku.
 
 This application support the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
 
-### Running Locally
+## Running Locally
 
 Make sure you have Python [installed properly](http://install.python-guide.org).  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
 
@@ -31,7 +18,7 @@ $ foreman start web
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-### Deploying to Heroku
+## Deploying to Heroku
 
 ```sh
 $ heroku create
@@ -40,7 +27,7 @@ $ heroku run python manage.py syncdb
 $ heroku open
 ```
 
-### Documentation
+## Documentation
 
 For more information about using Python on Heroku, see these Dev Center articles:
 
