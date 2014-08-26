@@ -32,6 +32,8 @@ If you subsequently change the configuration by installing additional packages v
 $ pip freeze > requirements.txt
 ```
 
+With a locally installed venv, start your app in a heroku-like manor with `foreman start web`.
+
 ## API
 
 Not defined yet. It should be RESTful and json.
