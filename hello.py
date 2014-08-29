@@ -6,3 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return 'Hello World!'
+
+
+
+@app.route('/form')
+def form():
+    dummy_results = {}
+    return dummy_results
