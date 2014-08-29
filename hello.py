@@ -9,7 +9,7 @@ def hello():
 
 
 
-@app.route('/form')
+@app.route('/api')
 def form():
     dummy_results = {}
     return dummy_results
