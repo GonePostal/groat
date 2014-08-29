@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -11,5 +11,10 @@ def hello():
 
 @app.route('/api')
 def form():
-    dummy_results = {}
-    return dummy_results
+    dummy_results = {"data":[{"date": "2014-07-01", "amount": 290},
+                             {"date": "2014-08-01", "amount": 210},
+                             {"date": "2014-09-01", "amount": 210},
+                             {"date": "2014-10-01", "amount": 140},
+                             {"date": "2014-11-01", "amount": 80},
+                             ]}
+    return jsonify(**dummy_results)
