@@ -1,0 +1,147 @@
+<!doctype html>
+<html ng-app="postal">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gonepostal Savings Tool </title>
+ 
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href = "css/gonepostalcustom.css" rel="stylesheet" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="ResultsController as results">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">Gone Postal</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">Home</a></li>
+           <li><a href="/contact">About</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+      
+  <div class="jumbotron">
+    <div class="container">
+    <br>    
+      <h1>Save Better</h1>
+    </div>
+  </div>  
+      
+ <div class="container"> 
+     
+     <div class = "row">
+     
+         <div class="col-md-7" id = "entry_form">
+              <h3>What big things do you need to save for?</h3>
+              <br>        
+              <form class = "form-inline" role="form">
+                  <div class = "form-group-1">
+                      <fieldset>
+                      <label for "big thing"></label>  
+                      <input type="text" class = "form-control" placeholder="What is it?" id="big_thing"> 
+                      &nbsp
+                      &nbsp 
+                      <input type="number" class = "form-control" placeholder="How much?" id="amount" >
+                      &nbsp 
+                      &nbsp  
+                      <input type="date" class = "form-control" id="when" placeholder = "when" >
+                      </fieldset>
+                      <br>
+                  </div>
+                  <div class = "form-group-2">
+                      <fieldset>
+                      <label for "big thing"></label>  
+                      <input type="text" class = "form-control" placeholder="What is it?" id="big_thing"> 
+                      &nbsp
+                      &nbsp 
+                      <input type="number" class = "form-control" placeholder="How much?" id="amount" >
+                      &nbsp 
+                      &nbsp  
+                      <input type="date" class = "form-control" id="when" placeholder = "when" >  
+                      </fieldset>
+                      <br>
+                      <button type="button" class="btn btn-primary btn-xs" id="another_row">Add another row                                                           </button>
+                  </div> 
+
+                  
+                  <div class = "form-group">
+                      <br> 
+                      <h3>Do you have any money saved already?</h3> 
+                      <fieldset> 
+                      <input type="number" class = "form-control" placeholder="e.g. £400" id="existing_savings">  
+                      </fieldset>
+                  </div>
+ 
+                  <div id="calculate">
+                      <br>
+                       <button type="submit" class="btn btn-success btn-lg">Calculate!</button>
+                  </div>  
+              </form>
+         <br>
+         <br>     
+         </div>
+         
+ 
+            <div class="col-md-5" id="results">
+                  <h3>Here's what you need to save each month from now:</h3>
+                  <table class="table table-striped" align="center"> 
+                  <thead>   
+                      <tr>
+                          <th class="col-sm-6">Date</th>
+                          <th class="col-sm-3">Amount</th>
+                      </tr>
+                  </thead>                                
+                      <tr ng-repeat="item in results.items">
+                          <td>{{item.month}}</td> 
+                          <td>{{item.amount}}</td>
+                      </tr>
+                  </table> 
+             
+        
+              <div id = "email_notification"> 
+              <form class = "form-inline" role="form">
+              <br> 
+              <br>      
+              <h4><i>Get e-mail alerts to keep you on track! </i></h4>      
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">@</div>
+                            <input class="form-control" type="email" placeholder="Enter email" id="email_entry"> 
+                        </div> 
+                   </div> 
+                   &nbsp
+                   <button type="submit" class="btn btn-default btn-md">Submit</button>
+ 
+              </div>
+         
+             </div>
+           
+      </div>
+ 
+    </div>     
+     
+ 
+    <script src="javascripts/scale.fix.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/gone-postal.js"></script>    
+     
+    <script>
+        jQuery(function($){
+            var $button = $('#another_row'),
+            $row = $('.form-group-1').clone();
+    
+            $button.click(function(){
+            $row.clone().insertBefore( $button );
+            });
+        });
+     </script> 
+  </body>
+</html>

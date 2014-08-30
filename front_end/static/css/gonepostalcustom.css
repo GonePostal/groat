@@ -1,0 +1,56 @@
+.row {
+    border:0px solid; 
+}
+
+.jumbotron {
+  padding: 12px;
+  margin-bottom: 2px;
+  color: inherit;
+  background-color: #eee;
+}
+
+#calculate {
+    text-align:center;  
+} 
+
+#calculate > * {
+    font-size: 30px;    
+}
+
+.table {  
+  width: 70%;   
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+#entry_form {
+    border-right:1px solid
+}
+
+#results * {
+    text-align:center
+}
+
+#big_thing {
+    width:220px;
+}
+
+#amount {
+    width:120px;
+}
+
+#when {
+    width:160px;
+}
+
+#existing_savings {
+    width:120px;
+}
+
+#email_notification * { 
+    text-align:center;
+}
+
+#email_entry  { 
+    width:200px;
+}
