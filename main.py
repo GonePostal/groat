@@ -4,11 +4,10 @@ import pymongo
 
 MONGODB_URI = os.environ.get('MONGOHQ_URL', "")
 client = pymongo.MongoClient(MONGODB_URI)
-db = client.db
+db = client.get_default_database()
 money_calc = db.money_calc
 
 app = Flask(__name__)
-app.debug = True
 
 
 @app.route('/')
