@@ -1,40 +1,37 @@
 import os
 from flask import Flask, jsonify, request
 import pymongo
+from db import store_results
+from calculation import calculate_result
 
-MONGODB_URI = os.environ.get('MONGOHQ_URL', "")
-
-client = pymongo.MongoClient(MONGODB_URI)
-db = client.get_default_database()
-money_calc = db.money_calc
+collection_name = 'money_calc'
 
 app = Flask(__name__, static_folder='front_end/static', static_url_path='')
 
 
 @app.route('/')
-def index():
+def route_index():
     return app.send_static_file('index.html')
+
+
+@app.route('/form')
+def route_form():
+    return app.send_static_file('form.html')
+
+
+dummy_request_json = {
+  "savings_targets": [{"name": "NY trip","amount": 120.00,"date": "2014-09-12"},
+                      {"name": "New shoes","amount": 1500.00,"date": "2014-11-03"}
+                     ],
+  "existing_savings": 134.26,
+  "session_id": "ae98-08c2-bd39-a167"
+}
 
 
 @app.route('/monthly_sample.json', methods=['GET', 'POST'])
 def form():
-    result_dict = {"result_data":get_dummy_data(),
-                     "request_args":request.args,
-                     "request_json":request.get_json(),
-                     "mongo_debug":{"MONGODB_URI":MONGODB_URI,
-                                    "collection_object":str(money_calc),
-                                    "previous_collection_count":money_calc.count(),
-                                    }
-                    }
-    money_calc.insert(result_dict)
-    result_dict['_id'] = str(result_dict['_id'])
+    request_json = request.get_json()
+    result_json = calculate_result(dummy_request_json)
+    result_dict = store_results(request.args, request_json, result_json, collection_name)
     return jsonify(**result_dict)
 
-
-def get_dummy_data():
-    return [{"date": "2014-07-01", "amount": 290},
-            {"date": "2014-08-01", "amount": 210},
-            {"date": "2014-09-01", "amount": 210},
-            {"date": "2014-10-01", "amount": 140},
-            {"date": "2014-11-01", "amount": 80},
-            ]
