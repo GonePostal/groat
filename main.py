@@ -16,11 +16,11 @@ def index():
     return app.send_static_file('index.html')
 
 
-@app.route('/api.json', methods=['GET', 'POST'])
+@app.route('/monthly_sample.json', methods=['GET', 'POST'])
 def form():
-    result_dict = {"data":get_dummy_data(),
+    result_dict = {"result_data":get_dummy_data(),
                      "request_args":request.args,
-                     "request_json":request.get_json(force=True),
+                     "request_json":request.get_json(),
                      "mongo_debug":{"MONGODB_URI":MONGODB_URI,
                                     "collection_object":str(money_calc),
                                     "previous_collection_count":money_calc.count(),
