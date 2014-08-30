@@ -8,6 +8,7 @@ db = client.db
 money_calc = db.money_calc
 
 app = Flask(__name__)
+app.debug = True
 
 
 @app.route('/')
