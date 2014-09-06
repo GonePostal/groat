@@ -1,8 +1,8 @@
 import os
 from flask import Flask, jsonify, request
 import pymongo
-from db import store_results
-from calculation import calculate_result
+import db
+import calculation
 
 collection_name = 'money_calc'
 
@@ -22,7 +22,7 @@ def route_form():
 @app.route('/monthly_sample.json', methods=['GET', 'POST'])
 def form():
     request_json = request.get_json()
-    result_json = calculate_result(request_json)
-    result_dict = store_results(request.args, request_json, result_json, collection_name)
+    result_json = calculation.calculate_result(request_json)
+    result_dict = db.store_results(request.args, request_json, result_json, collection_name)
     return jsonify(**result_dict)
 
