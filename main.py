@@ -11,12 +11,17 @@ app = Flask(__name__, static_folder='front_end/static', static_url_path='')
 
 @app.route('/')
 def route_index():
-    return app.send_static_file('index.html')
-
-
-@app.route('/form')
-def route_form():
     return app.send_static_file('form.html')
+
+
+@app.route('/design')
+def route_design():
+    return app.send_static_file('design.html')
+
+
+@app.route('/experiment')
+def route_experiment():
+    return app.send_static_file('experiment.html')
 
 
 @app.route('/monthly_sample.json', methods=['GET', 'POST'])
